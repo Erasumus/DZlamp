@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<head>
+<title>Registration form</title>
+<script type="text/javascript">
+function schet() 
+{
+var limit = 200;
+var text = document.getElementById('about');
+var content = text.value;
+var dlina = content.length;
+var counter = document.getElementById('counter');
+counter.innerHTML = limit - dlina;
+}
+function validate()
+{
+	var r = /^\w+@\w+\.\w{2,4}$/i;
+    if (!r.test(document.getElementById('login').value)) {
+		document.getElementById('vale').innerHTML = 'Write Correction e-mail'
+	}
+	else document.getElementById('vale').innerHTML = '';
+	var pas = document.getElementById('password').value.length;
+	if (pas < 3 || pas > 15)
+	{
+		document.getElementById('valp').innerHTML = 'The password must contain 3 to 15 characters'
+	}
+	else document.getElementById('valp').innerHTML = '';
+
+}
+</script>
+</head>
+<body>
+<form name="logon">
+	<h1>Registration form</h1>
+	<p>
+		<label for="login">E-mail: </label>
+		<br/>
+		<input id="login" type="text"><span style="color:red;" id="vale"></span>
+	</p>
+	<p>
+		<label for="password">Password: </label>
+		<br/>
+		<input id="password" type="password"><span style="color:red;" id="valp"></span>
+	</p>
+	<p>
+		<label for="about">Your comment: </label>
+		<br/>
+		<textarea maxlength="200" onkeyup="schet()" name="about" id="about" cols="17" rows="3"></textarea>
+		<br/>
+		<div class="counter">Symbols: <span id="counter">200</span></div>
+	</p>
+	<p>
+		<input onclick="validate()" type="button" value="Send">
+	</p>
+</form>
+</body>
+</html>
